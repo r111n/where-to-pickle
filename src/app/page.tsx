@@ -82,6 +82,7 @@ export default function HomePage() {
       <Navbar
         onOpenArchitecture={() => setIsArchitectureModalOpen(true)}
         isLiveSupabase={isLiveSupabase}
+        onRefreshData={executeSearch}
       />
 
       {/* Hero Section */}
@@ -97,7 +98,7 @@ export default function HomePage() {
               Compare &amp; Book Courts Across <span className="text-lime-400">Dumaguete</span>
             </h1>
             <p className="mt-2 text-sm sm:text-base text-emerald-200/90 max-w-2xl">
-              The unified availability search engine for recreational sports. No more 30-minute Facebook Messenger back-and-forths just to find one open court.
+              The unified availability search engine for recreational sports. Instant aggregation from Court-Access, Dinky, A-Courts, PlayTime Scheduler, and local clubs.
             </p>
           </div>
 
@@ -187,7 +188,7 @@ export default function HomePage() {
           <div className="flex items-center gap-2 font-bold text-slate-800 dark:text-slate-200">
             <span>🥒 WhereToPickle Dumaguete</span>
             <span>•</span>
-            <span className="font-normal text-slate-500">Built for Dumaguete Pickleball &amp; Sports Community</span>
+            <span className="font-normal text-slate-500">Connecting Dumaguete, Valencia, Sibulan &amp; Bacong Sports</span>
           </div>
           <div className="flex items-center gap-4">
             <button

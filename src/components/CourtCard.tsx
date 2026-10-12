@@ -30,8 +30,42 @@ export const CourtCard: React.FC<CourtCardProps> = ({
 }) => {
   const { court, venue, slots, availableCount, earliestSlot } = result;
 
-  // Filter available slots for display chips
   const openSlots = slots.filter((s) => s.status === 'available');
+
+  // Format platform branding label
+  const platformLabel = (() => {
+    switch (venue.booking_platform) {
+      case 'court-access':
+        return 'Court-Access.com';
+      case 'dinky':
+        return 'Dinky.ph';
+      case 'a-courts':
+        return 'A-Courts.com';
+      case 'playtimescheduler':
+        return 'PlayTimeScheduler';
+      case 'playserve':
+        return 'PlayServe.co';
+      default:
+        return 'Direct Venue';
+    }
+  })();
+
+  const platformBadgeColor = (() => {
+    switch (venue.booking_platform) {
+      case 'court-access':
+        return 'bg-blue-600/90 text-white';
+      case 'dinky':
+        return 'bg-pink-600/90 text-white';
+      case 'a-courts':
+        return 'bg-purple-600/90 text-white';
+      case 'playtimescheduler':
+        return 'bg-emerald-600/90 text-white';
+      case 'playserve':
+        return 'bg-amber-600/90 text-white';
+      default:
+        return 'bg-slate-700 text-white';
+    }
+  })();
 
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-all hover:border-emerald-500/50 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
@@ -47,8 +81,8 @@ export const CourtCard: React.FC<CourtCardProps> = ({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:hidden" />
 
-          {/* Availability Badge */}
-          <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+          {/* Top Badges */}
+          <div className="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-1.5">
             {availableCount > 0 ? (
               <span className="flex items-center gap-1 rounded-full bg-emerald-600/95 px-2.5 py-1 text-xs font-extrabold text-white shadow-md backdrop-blur-md">
                 <span className="h-1.5 w-1.5 rounded-full bg-lime-300 animate-pulse" />
@@ -61,14 +95,21 @@ export const CourtCard: React.FC<CourtCardProps> = ({
               </span>
             )}
 
-            {court.is_indoor && (
+            {/* Platform Tag */}
+            <span className={`rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wider shadow-sm backdrop-blur-md ${platformBadgeColor}`}>
+              {platformLabel}
+            </span>
+          </div>
+
+          {court.is_indoor && (
+            <div className="absolute bottom-3 left-3 hidden lg:block">
               <span className="rounded-full bg-slate-900/80 px-2.5 py-1 text-xs font-semibold text-sky-300 backdrop-blur-md border border-sky-400/30">
                 Indoor Air-Cooled
               </span>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* Surface & Lighting info */}
+          {/* Surface & Location on Mobile */}
           <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-medium lg:hidden">
             <span className="capitalize">{court.surface?.replace('_', ' ')}</span> • {venue.barangay || venue.city}
           </div>
@@ -165,7 +206,7 @@ export const CourtCard: React.FC<CourtCardProps> = ({
                 </span>
               </div>
               <span className="text-[10px] text-emerald-600 font-semibold dark:text-emerald-400">
-                Direct Venue Rate • No markups
+                Direct on {platformLabel}
               </span>
             </div>
 
@@ -178,7 +219,7 @@ export const CourtCard: React.FC<CourtCardProps> = ({
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 rounded-xl bg-slate-100 px-3.5 py-2 text-xs font-bold text-slate-800 hover:bg-slate-200 transition-colors dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
                 >
-                  <span>Book Site</span>
+                  <span>Book on {venue.booking_platform ? venue.booking_platform.replace('-', ' ') : 'Site'}</span>
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               )}

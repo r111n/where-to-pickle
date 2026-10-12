@@ -10,32 +10,32 @@ interface AreaHighlightsProps {
 export const AreaHighlights: React.FC<AreaHighlightsProps> = ({ onSelectArea }) => {
   const areas = [
     {
-      id: 'mangnao',
-      name: 'Mangnao / Praxevilla',
-      icon: <Sparkles className="h-4 w-4 text-lime-500" />,
-      tag: 'Premier Hub',
-      desc: 'Floodlit cushioned courts, synthetic mats, vibrant pickleball community.',
-    },
-    {
       id: 'bantayan',
       name: 'Bantayan Sports Strip',
-      icon: <Building2 className="h-4 w-4 text-sky-500" />,
-      tag: 'Indoor Air-Cooled',
-      desc: 'E.J. Blanco Drive indoor halls, Olympic mats, badminton & pickleball.',
+      icon: <Building2 className="h-4 w-4 text-purple-500" />,
+      tag: 'A-Courts & Riverside',
+      desc: 'Flores Ave indoor AC courts and Negros South Road 6-court facility.',
+    },
+    {
+      id: 'tubod',
+      name: 'Tubod / Henry Resort',
+      icon: <Sparkles className="h-4 w-4 text-pink-500" />,
+      tag: 'The Dink Club',
+      desc: 'Bamboo Pavilion courts right behind The Henry Resort.',
+    },
+    {
+      id: 'candau-ay',
+      name: 'Candau-ay District',
+      icon: <Flame className="h-4 w-4 text-amber-500" />,
+      tag: 'Pickle8 Open Play',
+      desc: '6 floodlit outdoor courts with active PlayTime Scheduler sessions.',
     },
     {
       id: 'valencia',
       name: 'Valencia Highlands',
       icon: <Wind className="h-4 w-4 text-emerald-500" />,
-      tag: 'Mountain Breeze',
-      desc: '15 mins up the hill, significantly cooler climate, covered multi-sport pavilion.',
-    },
-    {
-      id: 'sibulan',
-      name: 'Sibulan Coastal',
-      icon: <Flame className="h-4 w-4 text-amber-500" />,
-      tag: 'Airport & Seaside',
-      desc: '5 mins north of DGT Airport, ocean breeze and active evening play.',
+      tag: 'Greenscapes Mountain',
+      desc: '15 mins up the hill from Dumaguete. Cool breeze courts overlooking Mt. Talinis.',
     },
   ];
 

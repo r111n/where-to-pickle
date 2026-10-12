@@ -2,6 +2,14 @@ export type SportType = 'pickleball' | 'badminton' | 'tennis' | 'basketball';
 
 export type TimeWindow = 'all' | 'morning' | 'afternoon' | 'evening' | 'night';
 
+export type BookingPlatform =
+  | 'court-access'
+  | 'dinky'
+  | 'a-courts'
+  | 'playtimescheduler'
+  | 'playserve'
+  | 'direct';
+
 export interface Venue {
   id: string;
   name: string;
@@ -16,6 +24,7 @@ export interface Venue {
   messenger_url: string | null;
   website_url: string | null;
   booking_url: string | null;
+  booking_platform?: BookingPlatform;
   cover_image_url: string | null;
   amenities: string[];
   distance_km?: number;
